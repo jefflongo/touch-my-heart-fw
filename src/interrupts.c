@@ -1,4 +1,5 @@
 #include "board.h"
+#include "patterns.h"
 
 #include <stm32l0xx_hal.h>
 #include <stm32l0xx_ll_exti.h>
@@ -19,7 +20,7 @@ HANDLER(DebugMon, );
 
 HANDLER(SysTick, HAL_IncTick());
 
-#define DEBOUNCE_TIME 200
+#define DEBOUNCE_TIME 75
 static uint32_t last_tick = 0;
 
 void EXTI0_1_IRQHandler(void) {
@@ -27,7 +28,7 @@ void EXTI0_1_IRQHandler(void) {
         if (board_get_wakeup_pin_state() == 0) {
             uint32_t now = HAL_GetTick();
             if (now - last_tick > DEBOUNCE_TIME) {
-                board_set_leds(0x00000000);
+                pattern_off();
                 LL_EXTI_ClearFlag_0_31(LL_EXTI_LINE_0);
                 board_power_down();
             }

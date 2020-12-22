@@ -39,6 +39,7 @@ C_SOURCES =  \
 src/main.c \
 src/board.c \
 src/interrupts.c \
+src/patterns.c \
 src/stm32_assert.c \
 src/system_stm32l0xx.c \
 Drivers/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal.c \

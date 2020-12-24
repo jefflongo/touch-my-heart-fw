@@ -12,8 +12,7 @@ static int skip = 0;
 #define PLAY_STAGE(leds)                                                                           \
     do {                                                                                           \
         board_set_leds(leds);                                                                      \
-        skip--;                                                                                    \
-        HAL_Delay(ANIMATION_DELAY);                                                                \
+        if (--skip) HAL_Delay(ANIMATION_DELAY);                                                    \
     } while (0)
 
 #define REVERSE_STAGE(leds)                                                                        \

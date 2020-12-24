@@ -20,7 +20,7 @@ HANDLER(DebugMon, );
 
 HANDLER(SysTick, HAL_IncTick());
 
-#define DEBOUNCE_TIME 75
+#define DEBOUNCE_TIME 30
 static uint32_t last_tick = 0;
 
 void EXTI0_1_IRQHandler(void) {
